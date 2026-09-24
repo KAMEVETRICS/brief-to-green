@@ -84,6 +84,7 @@ brief-to-green/
     slides-outline.md    # 8–10 slide talk track
     bob-sessions/        # ★ mandatory judge evidence
     48h-plan.md
+    kickoff-runbook.md
     submission-draft.md
   scripts/               # generate-brief-docx.py, assemble-package-lock.sh
 ```
@@ -143,6 +144,7 @@ python3 -m venv .venv && .venv/bin/pip install python-docx
 | Submissions close | **Sun Sep 27, 8:00 AM PT** |
 
 - Plan: [`docs/48h-plan.md`](docs/48h-plan.md)  
+- Kickoff runbook: [`docs/kickoff-runbook.md`](docs/kickoff-runbook.md)  
 - Demo (2–3 min): [`docs/demo-script.md`](docs/demo-script.md)  
 - Slides: [`docs/slides-outline.md`](docs/slides-outline.md)  
 - Submission draft: [`docs/submission-draft.md`](docs/submission-draft.md)
