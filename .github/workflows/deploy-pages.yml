@@ -20,16 +20,11 @@ jobs:
           node-version: '20'
       - name: Install & build
         run: |
-          # Lock may be assembled from parts or regenerated
-          if [[ ! -f package-lock.json ]]; then
-            if [[ -f scripts/assemble-package-lock.sh ]]; then
-              bash scripts/assemble-package-lock.sh || npm install
-            else
-              npm install
-            fi
-          else
-            npm ci || npm install
-          fi
+          set -euo pipefail
+          # lock-parts may assemble an incomplete stub; always install from package.json
+          rm -f package-lock.json
+          npm install
+          test -d node_modules/react || test -d apps/sample-board/node_modules/react
           npm run build
           mkdir -p _site/sample-board _site/brief-green
           cp -r apps/sample-board/dist/* _site/sample-board/
