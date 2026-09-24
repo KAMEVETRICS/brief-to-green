@@ -9,6 +9,16 @@ Team: **KAMEVETRICS** · [@kongclaves](https://x.com/kongclaves)
 
 ---
 
+## Live demos
+
+| | |
+|--|--|
+| **Hub** | https://kamevetrics.github.io/brief-to-green/ |
+| **Sample board** (BEFORE gap) | https://kamevetrics.github.io/brief-to-green/sample-board/ |
+| **Brief→Green dashboard** | https://kamevetrics.github.io/brief-to-green/brief-green/ |
+
+---
+
 ## Links
 
 | | |

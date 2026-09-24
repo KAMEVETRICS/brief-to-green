@@ -1,9 +1,9 @@
 # GitHub Pages
 
-Source set to **GitHub Actions** (2026-09-24 PT).
+Source: **GitHub Actions** (enabled 2026-09-24 PT).
 
-Expected URLs after deploy:
+Live URLs:
 
-- https://kamevetries.github.io/brief-to-green/
-- https://kamevetries.github.io/brief-to-green/sample-board/
-- https://kamevetries.github.io/brief-to-green/brief-green/
+- https://kamevetrics.github.io/brief-to-green/
+- https://kamevetrics.github.io/brief-to-green/sample-board/
+- https://kamevetrics.github.io/brief-to-green/brief-green/
