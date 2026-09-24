@@ -1,25 +1,25 @@
 export function GapBanner() {
   return (
-    \u003caside className="gap-banner" role="status" aria-label="Feature gap for demo">
-      \u003cdiv className="gap-badge">BEFORE \u00b7 GAP\u003c/div>
-      \u003cdiv className="gap-body">
-        \u003cstrong>Missing for the Bob demo\u003c/strong>
-        \u003cul>
-          \u003cli>
-            \u003cspan className="gap-missing">Priority filter\u003c/span> \u2014 seed data has
+    <aside className="gap-banner" role="status" aria-label="Feature gap for demo">
+      <div className="gap-badge">BEFORE · GAP</div>
+      <div className="gap-body">
+        <strong>Missing for the Bob demo</strong>
+        <ul>
+          <li>
+            <span className="gap-missing">Priority filter</span> — seed data has
             high/medium/low, but no All / High / Medium / Low control above the board
-          \u003c/li>
-          \u003cli>
-            \u003cspan className="gap-missing">Due-date badges\u003c/span> \u2014 cards carry due
+          </li>
+          <li>
+            <span className="gap-missing">Due-date badges</span> — cards carry due
             dates, but overdue / soon / upcoming chips are not rendered
-          \u003c/li>
-        \u003c/ul>
-        \u003cp className="gap-cta">
-          Drop \u003ccode>briefs/sample-feature-brief.md\u003c/code> (or \u003ccode>.docx\u003c/code>) into
-          Bob \u003cem>Plan\u003c/em>, then fan out with Agent / subagents \u2192 see AFTER on the
-          Brief\u2192Green dashboard.
-        \u003c/p>
-      \u003c/div>
-    \u003c/aside>
+          </li>
+        </ul>
+        <p className="gap-cta">
+          Drop <code>briefs/sample-feature-brief.md</code> (or <code>.docx</code>) into
+          Bob <em>Plan</em>, then fan out with Agent / subagents → see AFTER on the
+          Brief→Green dashboard.
+        </p>
+      </div>
+    </aside>
   )
 }
