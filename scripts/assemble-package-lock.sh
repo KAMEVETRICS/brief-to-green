@@ -3,7 +3,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/package-lock.json"
 PARTS_DIR="$ROOT/scripts/lock-parts"
-if compgen -G "$PARTS_DIR/package-lock.part*.b64" > /dev/null; then
+if compgen -G "$PARTS_DIR/j*.txt" > /dev/null; then
+  cat "$PARTS_DIR"/j*.txt > "$OUT"
+elif [[ -f "$PARTS_DIR/half1.json.txt" && -f "$PARTS_DIR/half2.json.txt" ]]; then
+  cat "$PARTS_DIR/half1.json.txt" "$PARTS_DIR/half2.json.txt" > "$OUT"
+elif compgen -G "$PARTS_DIR/package-lock.part*.b64" > /dev/null; then
   cat "$PARTS_DIR"/package-lock.part*.b64 | tr -d '\n' | base64 -d > "$OUT"
 elif compgen -G "$PARTS_DIR/p*.b64" > /dev/null; then
   cat "$PARTS_DIR"/p*.b64 | tr -d '\n' | base64 -d > "$OUT"

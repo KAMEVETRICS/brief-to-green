@@ -1,7 +1,7 @@
 # Regenerating package-lock.json
 
 If `package-lock.json` is missing at the repo root (MCP text push size limits),
-assemble it from the committed base64 parts:
+assemble it from the committed parts:
 
 ```bash
 bash scripts/assemble-package-lock.sh
@@ -9,5 +9,9 @@ bash scripts/assemble-package-lock.sh
 npm install   # regenerates lock from package.json workspaces
 ```
 
-The part files under `scripts/lock-parts/` are a byte-exact encoding of the
-lock produced by `npm install` on Node 18+ for this repo.
+Preferred parts (plain JSON slices):
+- `j*.txt` — concatenated byte-exact lock (8KB chunks)
+
+Fallbacks:
+- `half1.json.txt` + `half2.json.txt`
+- `package-lock.part*.b64` / `p*.b64`
