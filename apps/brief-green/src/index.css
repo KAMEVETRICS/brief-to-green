@@ -1,0 +1,69 @@
+:root {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #e7eef8;
+  background: #070d18;
+  line-height: 1.45;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 0% 0%, #123d3555, transparent),
+    radial-gradient(800px 480px at 100% 10%, #1a2f6b55, transparent),
+    #070d18;
+}
+button, input { font: inherit; }
+.shell { max-width: 1040px; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
+.hero { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: 1.25rem; }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.72rem; color: #7dcea3; }
+.hero h1 { margin: 0.25rem 0; font-size: 2.2rem; letter-spacing: -0.02em; }
+.accent { color: #5eead4; }
+.lede { margin: 0; max-width: 40rem; color: #a7b7ce; }
+.hero-meta { display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end; }
+.pill { display: inline-block; text-decoration: none; color: #e7eef8; border: 1px solid #2c4060; background: #121c2e; border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; }
+.pill.muted { color: #8aa0bc; }
+.rail { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin-bottom: 1.25rem; }
+@media (max-width: 800px) {
+  .rail { grid-template-columns: 1fr 1fr; }
+  .hero { flex-direction: column; }
+  .hero-meta { align-items: flex-start; }
+}
+.step { text-align: left; background: #101a2b; border: 1px solid #24344f; border-radius: 12px; padding: 0.75rem; color: inherit; cursor: pointer; }
+.step.active { border-color: #2dd4bf; box-shadow: 0 0 0 1px #2dd4bf55; }
+.step-label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+.step-blurb { display: block; font-size: 0.78rem; color: #8aa0bc; }
+.panels { display: flex; flex-direction: column; gap: 1rem; }
+.card.panel { background: #0f1726; border: 1px solid #24344f; border-radius: 14px; padding: 1.1rem 1.2rem; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.panel h2 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+.panel-head h2 { margin: 0; }
+.hint { color: #8aa0bc; margin-top: 0; }
+.tag { font-size: 0.75rem; color: #9fb0c7; border: 1px solid #334861; border-radius: 999px; padding: 0.2rem 0.55rem; }
+.tag.ok { color: #5eead4; border-color: #2dd4bf66; }
+.drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; border: 1.5px dashed #3a516f; border-radius: 12px; padding: 1.5rem; margin: 0.75rem 0; cursor: pointer; background: #0b1320; }
+.drop input { display: none; }
+.drop-title { font-weight: 600; }
+.drop-sub { font-size: 0.85rem; color: #8aa0bc; }
+.btn { display: inline-block; border: 1px solid #334861; background: #152238; color: #e7eef8; border-radius: 8px; padding: 0.5rem 0.9rem; cursor: pointer; text-decoration: none; }
+.btn.primary { background: linear-gradient(135deg, #0f766e, #1d4ed8); border-color: transparent; }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+.selected { margin: 0.75rem 0 0; color: #7dcea3; }
+.plan-title { margin: 0.5rem 0; color: #5eead4; }
+.checks { margin: 0.4rem 0 0; padding-left: 1.1rem; color: #c5d4ea; }
+.checks.done li::marker { color: #34d399; }
+.lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.9rem; }
+@media (max-width: 800px) { .lanes { grid-template-columns: 1fr; } }
+.lane { background: #121c2e; border: 1px solid #2a3c5a; border-radius: 10px; padding: 0.75rem; }
+.lane header { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.lane h3 { margin: 0; font-size: 0.95rem; }
+.lane .mode { margin: 0.35rem 0; font-size: 0.78rem; color: #7dcea3; }
+.badge { text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.06em; border-radius: 999px; padding: 0.15rem 0.45rem; }
+.badge.pending { background: #1f2937; color: #9ca3af; }
+.badge.running { background: #1e3a5f; color: #93c5fd; }
+.badge.done { background: #064e3b; color: #6ee7b7; }
+.lane.status-running { border-color: #3b82f6; }
+.lane.status-done { border-color: #34d39966; }
+.green { border-color: #34d39955; background: linear-gradient(180deg, #0f241f, #0f1726 40%); }
+.foot { margin-top: 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: #6b7f99; font-size: 0.8rem; }
+code { font-size: 0.88em; color: #c7d7ee; }
