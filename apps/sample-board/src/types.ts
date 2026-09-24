@@ -1,17 +1,21 @@
 export type Status = 'todo' | 'doing' | 'done'
 
+/**
+ * Priority + dueDate live on the model so Bob Agent can wire UI immediately.
+ * INTENTIONAL GAP: Priority *filter control* and due-date *badges* are not
+ * rendered yet — see GapBanner and briefs/sample-feature-brief.md.
+ */
+export type Priority = 'low' | 'medium' | 'high'
+
 export interface Task {
   id: string
   title: string
   assignee: string
   status: Status
-  /**
-   * INTENTIONAL GAP (see briefs/sample-feature-brief.md):
-   * Priority filter + due-date badges are NOT implemented yet.
-   * Bob Plan/Agent should add:
-   *   priority: 'low' | 'medium' | 'high'
-   *   dueDate?: string  // YYYY-MM-DD
-   */
+  /** Ready for Bob — filter UI not built yet */
+  priority: Priority
+  /** YYYY-MM-DD; ready for Bob — badge UI not built yet */
+  dueDate?: string
 }
 
 export const COLUMNS: { id: Status; label: string }[] = [
