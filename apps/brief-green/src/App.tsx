@@ -11,6 +11,7 @@ import { BriefDropzone } from './components/BriefDropzone'
 import { PlanPanel } from './components/PlanPanel'
 import { LaneGrid } from './components/LaneGrid'
 import { GreenPanel } from './components/GreenPanel'
+import { MetricsStrip } from './components/MetricsStrip'
 
 function advanceLanes(plan: MockPlan, tick: number): MockPlan {
   const order: LaneStatus[] = ['pending', 'running', 'done']
@@ -32,6 +33,7 @@ export default function App() {
 
   const plan = useMemo(() => advanceLanes(MOCK_PLAN, tick), [tick])
   const allDone = plan.lanes.every((l) => l.status === 'done')
+  const showMetrics = stage === 'green' && allDone
 
   function onBriefSelected(name: string) {
     setBriefName(name)
@@ -79,11 +81,21 @@ export default function App() {
           >
             GitHub
           </a>
+          <a
+            className="pill"
+            href="https://bob.ibm.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            IBM Bob
+          </a>
           <span className="pill muted">Mock plan until Bob live</span>
         </div>
       </header>
 
       <StageRail stages={STAGES} active={stage} onSelect={setStage} />
+
+      <MetricsStrip metrics={plan.metrics} visible={showMetrics} />
 
       <div className="panels">
         {(stage === 'brief' || !briefName) && (
@@ -102,7 +114,13 @@ export default function App() {
 
       <footer className="foot">
         <span>Ask → Plan → Agent / subagents → evidence in docs/bob-sessions/</span>
-        <span>MIT · Sep 25–27 2026</span>
+        <span>
+          <a href="https://lablab.ai/ai-hackathons/ibm-bob-2-hackathon" target="_blank" rel="noreferrer">
+            Hackathon
+          </a>
+          {' · '}
+          MIT · Sep 25–27 2026
+        </span>
       </footer>
     </div>
   )

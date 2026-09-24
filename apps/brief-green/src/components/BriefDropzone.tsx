@@ -6,9 +6,10 @@ interface Props {
 export function BriefDropzone({ selectedName, onSelected }: Props) {
   return (
     <section className="card panel">
-      <h2>Drop a product brief</h2>
+      <h2>1 · Load a product brief</h2>
       <p className="hint">
-        Markdown now. At kickoff, Bob document understanding can ingest DOCX/PDF.
+        Markdown now. At kickoff, Bob <strong>document understanding</strong> can
+        ingest <code>briefs/sample-feature-brief.docx</code> (or PDF).
       </p>
       <label className="drop">
         <input
@@ -20,15 +21,24 @@ export function BriefDropzone({ selectedName, onSelected }: Props) {
           }}
         />
         <span className="drop-title">Choose brief file</span>
-        <span className="drop-sub">or load the sample PRD</span>
+        <span className="drop-sub">.md · .docx · .pdf</span>
       </label>
-      <button
-        type="button"
-        className="btn primary"
-        onClick={() => onSelected('sample-feature-brief.md')}
-      >
-        Use sample-feature-brief.md
-      </button>
+      <div className="drop-actions">
+        <button
+          type="button"
+          className="btn primary"
+          onClick={() => onSelected('sample-feature-brief.md')}
+        >
+          Use sample-feature-brief.md
+        </button>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => onSelected('sample-feature-brief.docx')}
+        >
+          Use sample .docx
+        </button>
+      </div>
       {selectedName && (
         <p className="selected">
           Loaded: <code>{selectedName}</code> → advancing to Bob Plan…
