@@ -10,7 +10,12 @@ export function LaneGrid({ lanes, running, onRun }: Props) {
   return (
     <section className="card panel">
       <div className="panel-head">
-        <h2>Parallel Agent / subagent lanes</h2>
+        <div>
+          <h2>Parallel Agent / subagent lanes</h2>
+          <p className="hint tight">
+            Same wall-clock — UI, logic, and tests fan out instead of serial handoffs.
+          </p>
+        </div>
         <button type="button" className="btn primary" onClick={onRun} disabled={running}>
           {running ? 'Running…' : 'Simulate parallel run'}
         </button>
@@ -23,7 +28,12 @@ export function LaneGrid({ lanes, running, onRun }: Props) {
               <span className={`badge ${lane.status}`}>{lane.status}</span>
             </header>
             <p className="mode">{lane.bobMode}</p>
-            <p>{lane.detail}</p>
+            <p className="lane-detail">{lane.detail}</p>
+            <ul className="lane-steps">
+              {lane.steps.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>
