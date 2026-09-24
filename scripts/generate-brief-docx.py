@@ -2,13 +2,12 @@
 """Generate briefs/sample-feature-brief.docx for Bob document-understanding demo.
 
 Prefers python-docx. If unavailable, decodes briefs/sample-feature-brief.docx.b64
-(checked in for MCP/text-only push workflows).
+or briefs/docx-parts/brief.part*.b64 (MCP text-only push workflows).
 """
 
 from __future__ import annotations
 
 import base64
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,10 +16,15 @@ B64 = ROOT / "briefs" / "sample-feature-brief.docx.b64"
 
 
 def write_from_b64() -> None:
-    if not B64.exists():
-        raise SystemExit(f"Missing {B64} and python-docx unavailable")
-    OUT.write_bytes(base64.b64decode(B64.read_text().strip()))
-    print(f"Decoded {OUT} from {B64.name}")
+    parts_dir = ROOT / "briefs" / "docx-parts"
+    if B64.exists():
+        raw = B64.read_text().strip()
+    elif parts_dir.exists():
+        raw = "".join(p.read_text().strip() for p in sorted(parts_dir.glob("brief.part*.b64")))
+    else:
+        raise SystemExit(f"Missing {B64} (or briefs/docx-parts) and python-docx unavailable")
+    OUT.write_bytes(base64.b64decode(raw))
+    print(f"Decoded {OUT}")
 
 
 def write_with_docx() -> None:
@@ -101,7 +105,6 @@ def write_with_docx() -> None:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUT)
-    # Keep text-safe companion for repos that cannot push binary via API.
     B64.write_text(base64.b64encode(OUT.read_bytes()).decode("ascii") + "\n")
     print(f"Wrote {OUT} and {B64}")
 
