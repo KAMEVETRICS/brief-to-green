@@ -21,7 +21,8 @@ def write_from_b64() -> None:
     if B64.exists():
         raw = B64.read_text().strip()
     elif parts_dir.exists():
-        raw = "".join(p.read_text().strip() for p in sorted(parts_dir.glob("brief.part*.b64")))
+        parts = sorted(parts_dir.glob("brief.part*.b64")) or sorted(parts_dir.glob("d*.b64")) or sorted(parts_dir.glob("p*.b64"))
+        raw = "".join(p.read_text().strip() for p in parts)
     else:
         raise SystemExit(f"Missing {B64} (or briefs/docx-parts) and python-docx unavailable")
     OUT.write_bytes(base64.b64decode(raw))

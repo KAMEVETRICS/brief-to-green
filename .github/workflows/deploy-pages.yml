@@ -1,0 +1,57 @@
+name: Deploy GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install & build
+        run: |
+          # Lock may be assembled from parts or regenerated
+          if [[ ! -f package-lock.json ]]; then
+            if [[ -f scripts/assemble-package-lock.sh ]]; then
+              bash scripts/assemble-package-lock.sh || npm install
+            else
+              npm install
+            fi
+          else
+            npm ci || npm install
+          fi
+          npm run build
+          mkdir -p _site/sample-board _site/brief-green
+          cp -r apps/sample-board/dist/* _site/sample-board/
+          cp -r apps/brief-green/dist/* _site/brief-green/
+          cat > _site/index.html << 'HTML'
+          <!doctype html><html><head><meta charset="utf-8"><title>Brief→Green</title>
+          <style>body{font-family:system-ui;max-width:40rem;margin:3rem auto;padding:0 1rem}
+          a{display:block;margin:.5rem 0;font-size:1.2rem}</style></head>
+          <body><h1>Brief→Green</h1>
+          <a href="./sample-board/">Sample Board demo</a>
+          <a href="./brief-green/">Brief→Green dashboard</a>
+          <p>IBM Bob 2.0 hackathon · KAMEVETRICS</p></body></html>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
