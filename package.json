@@ -1,0 +1,20 @@
+{
+  "name": "brief-to-green",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Brief→Green — spec-to-working-software workflow demo for IBM Bob 2.0 hackathon",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:board": "npm run dev -w @brief-to-green/sample-board",
+    "dev:dashboard": "npm run dev -w @brief-to-green/brief-green",
+    "build": "npm run build -w @brief-to-green/sample-board && npm run build -w @brief-to-green/brief-green",
+    "preview:board": "npm run preview -w @brief-to-green/sample-board",
+    "preview:dashboard": "npm run preview -w @brief-to-green/brief-green"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,13 +1,37 @@
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Build
 dist/
 build/
 .next/
-.turbo/
-.DS_Store
-*.log
+out/
+*.tsbuildinfo
+
+# Env / secrets
 .env
 .env.*
 !.env.example
+
+# Logs / caches
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+*.local
+.cache/
+.vite/
 coverage/
-.vscode/
+
+# Editor
 .idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Bob session exports (keep folder + README; ignore large binaries if needed)
+# docs/bob-sessions/*.png — DO commit screenshots for judges
+# Uncomment next line only if exports get huge during local testing:
+# docs/bob-sessions/_scratch/
