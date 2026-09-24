@@ -20,4 +20,11 @@ else
   echo "Fallback: npm install  # regenerates package-lock.json from workspaces" >&2
   exit 1
 fi
-echo "Assembled $OUT ($(wc -c < "$OUT") bytes)"
+BYTES=$(wc -c < "$OUT")
+echo "Assembled $OUT ($BYTES bytes)"
+if [[ "$BYTES" -lt 10000 ]]; then
+  echo "assembled lock too small ($BYTES bytes) — incomplete parts" >&2
+  rm -f "$OUT"
+  exit 1
+fi
+python3 -c "import json,sys; json.load(open(sys.argv[1])); print('lock JSON OK')" "$OUT"

@@ -17,11 +17,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
       - name: Install & build
         run: |
           set -euo pipefail
-          # lock-parts may assemble an incomplete stub; always install from package.json
+          # Never trust incomplete lock-parts in CI — always install from package.json
           rm -f package-lock.json
           npm install
           test -d node_modules/react || test -d apps/sample-board/node_modules/react
