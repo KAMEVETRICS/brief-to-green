@@ -9,13 +9,23 @@ interface Props {
 export function TaskCard({ task, onMove }: Props) {
   return (
     <article className="card">
-      <h3>{task.title}</h3>
+      <div className="card-top">
+        <h3>{task.title}</h3>
+        {/*
+          INTENTIONAL GAP: priority + dueDate exist on the model but are not shown.
+          Bob Agent should add a priority chip and a due-date badge here.
+          Raw values kept in data-* for demo inspectors / Bob Ask.
+        */}
+        <span
+          className="gap-hint"
+          title="Gap: priority & due badge not rendered"
+          data-priority={task.priority}
+          data-due={task.dueDate ?? ''}
+        >
+          data ready · UI gap
+        </span>
+      </div>
       <p className="assignee">@{task.assignee}</p>
-
-      {/*
-        TODO (Bob Agent): Render due-date badge when task.dueDate exists.
-        TODO (Bob Agent): Priority selector / chip when task.priority exists.
-      */}
 
       <label className="move">
         Move to
