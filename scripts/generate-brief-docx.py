@@ -2,12 +2,13 @@
 """Generate briefs/sample-feature-brief.docx for Bob document-understanding demo.
 
 Prefers python-docx. If unavailable, decodes briefs/sample-feature-brief.docx.b64
-or briefs/docx-parts/brief.part*.b64 (MCP text-only push workflows).
+(checked in for MCP/text-only push workflows).
 """
 
 from __future__ import annotations
 
 import base64
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -105,6 +106,7 @@ def write_with_docx() -> None:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUT)
+    # Keep text-safe companion for repos that cannot push binary via API.
     B64.write_text(base64.b64encode(OUT.read_bytes()).decode("ascii") + "\n")
     print(f"Wrote {OUT} and {B64}")
 
