@@ -75,7 +75,7 @@ brief-to-green/
     bob-sessions/        # ★ mandatory judge evidence
     48h-plan.md
     submission-draft.md
-  scripts/               # generate-brief-docx.py
+  scripts/               # generate-brief-docx.py, assemble-package-lock.sh
 ```
 
 ---
@@ -98,6 +98,15 @@ npm run build
 ```
 
 No paid APIs. Dashboard uses mock plan JSON until Bob is live at kickoff — field names stay stable so a real Bob export can drop in.
+
+### package-lock.json
+
+```bash
+# Prefer committed lock at repo root. If missing after clone:
+bash scripts/assemble-package-lock.sh
+# or simply:
+npm install
+```
 
 ### Regenerate DOCX brief
 
